@@ -71,6 +71,7 @@ from ControlPage  import ControlPage
 from TerminalPage import TerminalPage
 from ProbePage    import ProbePage
 from EditorPage   import EditorPage
+from IOExpanderPage import IOExpanderPage
 
 _openserial = True	# override ini parameters
 _device     = None
@@ -193,7 +194,8 @@ class Application(Toplevel,Sender):
 				FilePage,
 				ProbePage,
 				TerminalPage,
-				ToolsPage):
+				ToolsPage,
+				IOExpanderPage,):
 			page = cls(self.ribbon, self)
 			self.pages[page.name] = page
 
@@ -230,6 +232,7 @@ class Application(Toplevel,Sender):
 		self.editor   = Page.frames["Editor"].editor
 		self.terminal = Page.frames["Terminal"].terminal
 		self.buffer   = Page.frames["Terminal"].buffer
+		self.ioexpander = Page.frames["IOESerial"]
 
 		# XXX FIXME Do we need it or I can takes from Page every time?
 		self.autolevel = Page.frames["Probe:Autolevel"]
